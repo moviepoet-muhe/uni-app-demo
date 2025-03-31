@@ -1,0 +1,1 @@
+{"version":3,"file":"cart.js","sources":["D:/software/HBuilderX/plugins/uniapp-cli-vite/uniPage:/cGFnZXMvY2FydC9jYXJ0LnZ1ZQ"],"sourcesContent":["import MiniProgramPage from 'C:/Users/dengw/Desktop/VUE3/VUE3_项目/小程序/uni-app-demo/pages/cart/cart.vue'\nwx.createPage(MiniProgramPage)"],"names":[],"mappings":";;;;;;;;;;;;AACA,GAAG,WAAW,eAAe;"}
