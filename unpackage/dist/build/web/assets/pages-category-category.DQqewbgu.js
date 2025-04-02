@@ -1,0 +1,1 @@
+import{k as a,c as t,w as o,f as s,o as e,d,t as r}from"./index-9g3xRjPO.js";import{_ as i}from"./_plugin-vue_export-helper.BCo6x5W8.js";const n=i({data:()=>({id:0}),onShow(){this.id=a().globalData.categoryId},methods:{}},[["render",function(a,i,n,l,u,f){const p=s;return e(),t(p,null,{default:o((()=>[d(" 分类id = "+r(u.id),1)])),_:1})}]]);export{n as default};

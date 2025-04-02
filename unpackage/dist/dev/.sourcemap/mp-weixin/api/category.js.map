@@ -1,0 +1,1 @@
+{"version":3,"file":"category.js","sources":["api/category.js"],"sourcesContent":["import { get } from \"../utils/request\"\n\n/**\n * 查询所有分类数据\n */\nexport const getAllCategories = () => get('/api/tabs')\n"],"names":["get"],"mappings":";;AAKY,MAAC,mBAAmB,MAAMA,cAAAA,IAAI,WAAW;;"}

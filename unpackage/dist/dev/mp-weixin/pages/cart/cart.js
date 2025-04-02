@@ -1,13 +1,36 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
+const store_cart = require("../../store/cart.js");
 const _sfc_main = {
   data() {
     return {};
   },
-  methods: {}
+  computed: {
+    ...common_vendor.mapState(store_cart.useCartStore, ["cart", "totalAmount", "totalPrice"])
+  },
+  methods: {
+    handleSubmit() {
+      common_vendor.index.navigateTo({
+        url: "/pages/confirm/confirm"
+      });
+    }
+  }
 };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return {};
+  return {
+    a: common_vendor.f(_ctx.cart, (goods, k0, i0) => {
+      return {
+        a: goods.image,
+        b: common_vendor.t(goods.title),
+        c: common_vendor.t(goods.price),
+        d: common_vendor.t(goods.amount),
+        e: goods.id
+      };
+    }),
+    b: common_vendor.t(_ctx.totalAmount),
+    c: common_vendor.t(_ctx.totalPrice),
+    d: common_vendor.o((...args) => $options.handleSubmit && $options.handleSubmit(...args))
+  };
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render]]);
 wx.createPage(MiniProgramPage);

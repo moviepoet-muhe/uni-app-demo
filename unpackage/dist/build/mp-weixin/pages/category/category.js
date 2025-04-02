@@ -1,0 +1,1 @@
+"use strict";const t=require("../../common/vendor.js"),e={data:()=>({id:0}),onShow(){this.id=getApp().globalData.categoryId},methods:{}};const o=t._export_sfc(e,[["render",function(e,o,r,a,n,c){return{a:t.t(n.id)}}]]);wx.createPage(o);

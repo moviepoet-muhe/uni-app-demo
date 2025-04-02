@@ -1,0 +1,1 @@
+<text style="{{a}}" class="{{('uni-icons') + ' ' + b + ' ' + c + ' ' + d}}" onTap="{{e}}"><slot></slot></text>

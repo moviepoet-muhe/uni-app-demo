@@ -1,0 +1,1 @@
+"use strict";const e=require("../../common/vendor.js"),n={data:()=>({}),methods:{handleLogin(){e.wx$1.login({success:n=>{console.log("res:",n),e.index.setStorage({key:"token",data:"adsflkjasdlfkjalskdfjlaksdjf"})}})}}};const o=e._export_sfc(n,[["render",function(n,o,s,a,t,d){return{a:e.o(((...e)=>d.handleLogin&&d.handleLogin(...e)))}}]]);wx.createPage(o);

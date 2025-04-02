@@ -33,6 +33,20 @@
 			{
 				"navigationBarTitleText" : "详情"
 			}
+		},
+		{
+			"path" : "pages/confirm/confirm",
+			"style" : 
+			{
+				"navigationBarTitleText" : "确认订单"
+			}
+		},
+		{
+			"path" : "pages/login/login",
+			"style" : 
+			{
+				"navigationBarTitleText" : "用户登录"
+			}
 		}
 	],
 	"globalStyle": {

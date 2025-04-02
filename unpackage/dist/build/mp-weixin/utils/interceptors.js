@@ -1,0 +1,1 @@
+"use strict";const e=require("../common/vendor.js"),n=["/pages/confirm/confirm","/pages/mine/mine"];["navigateTo","switchTab","redirectTo","reLaunch","navigateBack"].forEach((i=>{e.index.addInterceptor(i,{invoke(i){const{url:o}=i;if(n.includes(o)){if(!e.index.getStorageSync("token"))return e.index.navigateTo({url:"/pages/login/login"}),!1}}})}));

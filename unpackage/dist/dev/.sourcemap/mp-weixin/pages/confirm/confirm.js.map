@@ -1,0 +1,1 @@
+{"version":3,"file":"confirm.js","sources":["D:/software/HBuilderX/plugins/uniapp-cli-vite/uniPage:/cGFnZXMvY29uZmlybS9jb25maXJtLnZ1ZQ"],"sourcesContent":["import MiniProgramPage from 'C:/Users/dengw/Desktop/小程序/uni-app-demo/pages/confirm/confirm.vue'\nwx.createPage(MiniProgramPage)"],"names":[],"mappings":";;;;;;;;;;;;AACA,GAAG,WAAW,eAAe;"}

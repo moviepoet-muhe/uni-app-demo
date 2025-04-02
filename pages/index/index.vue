@@ -8,7 +8,7 @@
 		<uni-search-bar placeholder="请输入搜索关键字" cancel-text="登录" cancelButton="always" />
 		<!-- 分类滚动视图 -->
 		<scroll-view scroll-x class="scroll-category">
-			<text v-for="category in categories" :key="category.id"
+			<text v-for="category in categories" :key="category.id" @click="jumpToCategory(category.id)"
 				style="white-space: nowrap; padding: 0 12px;">{{ category.name }}</text>
 		</scroll-view>
 		<!-- 轮播图 -->
@@ -20,9 +20,13 @@
 		<!-- 推荐列表 -->
 		<view class="recommend-list">
 			<view class="recommend-list-item" v-for="goods in recommends" :key="goods.id">
-				<image class="img" :src="goods.image"></image>
-				<view class="title">{{ goods.title }}</view>
-				<view class="price">¥{{ goods.price }}</view>
+				<image class="img" :src="goods.image" @click="jumpToDetail(goods.id)"></image>
+				<navigator open-type="navigate" :url="'/pages/detail/detail?id='+goods.id" class="title">
+					{{ goods.title }}</navigator>
+				<view class="price">¥{{ goods.price }}
+	
+				<button style="font-size:12px;" @click="handleAddToCart(goods)">加入购物车 </button>
+				</view>
 			</view>
 		</view>
 		<view v-if="!isEnd">加载中...</view>
@@ -31,14 +35,11 @@
 </template>
 
 <script>
-	import {
-		getAllCategories
-	} from '../../api/category.js'
-	import {
-		getHomeData,
-		getMore
-	} from '../../api/home.js'
-
+	import { mapActions } from 'pinia'
+	import useCartStore from '../../store/cart.js'
+	import { getAllCategories } from '../../api/category.js'
+	import { getHomeData, getMore } from '../../api/home.js'
+	
 	export default {
 		data() {
 			return {
@@ -49,6 +50,7 @@
 				isEnd: false, // 是否全部数据查询完毕
 			}
 		},
+		
 		async onLoad() {
 			try {
 				const res = await Promise.all([
@@ -65,9 +67,11 @@
 				console.error('error:', error)
 			}
 		},
+		
 		onPullDownRefresh() {
 			console.log('下拉刷新效果...')
 		},
+		
 		async onReachBottom() {
 			if (this.isEnd) {
 				console.log('全部数据查询完毕')
@@ -84,7 +88,58 @@
 				console.log('查询数据异常:::', error)
 			}
 		},
+		
+		methods: {
+			...mapActions(useCartStore, {
+				addToCart: 'addToCart',
+				remove: 'removeFromCart',
+			}),
+			
+			// 	跳转详情页
+			jumpToDetail(id) {
+				// console.log('点击了图片', id);
+				// 调用 uni.navigateTo() 跳转到非 tabbar 页面
+				uni.navigateTo({
+					url: '/pages/detail/detail?id='+id,
+				})
+			},
+			
+			// 跳转到 tabbar 页面
+			jumpToCategory(id){
+				// 调用 uni.switchTab()跳转到 tabbar 页面，
+				// 但要注意的是，跳转时的 url 后不能跟查询字符串参数
+				// 向 tabbar 页面跳转前，可将需要传递的数据先保存到 globalData 中
+				getApp().globalData.categoryId = id
+				// 跳转 tabbar 页面
+				uni.switchTab({
+						url: '/pages/category/category',
+				})
+			},
+			
+			/**
+			 * 处理加入购物车
+			 */
+			handleAddToCart(goods) {
+				// 构建当前加入购物车商品的信息
+				const {id, title, price, image} = goods
+				const currGoods = {
+					id,
+					title,
+					price,
+					image,
+					amount: 1, // 选购商品的数量
+				}
+				// 将当前选购商品的数据信息保存到 store 中
+				this.addToCart(currGoods)
+				// 轻提示
+				uni.showToast({
+					title: '加入购物车成功!',
+					duration: 2000,
+				})
+			}
+		}
 	}
+
 </script>
 
 <style scoped lang="scss">

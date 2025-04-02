@@ -1,0 +1,1 @@
+import{c as e,w as s,f as t,o as a,d as o}from"./index-9g3xRjPO.js";import{_ as r}from"./_plugin-vue_export-helper.BCo6x5W8.js";const n=r({data:()=>({}),methods:{}},[["render",function(r,n,d,u,f,l){const p=t;return a(),e(p,null,{default:s((()=>[o(" 确认订单页面，需要用户登录后才能访问（即需要用户鉴权） ")])),_:1})}]]);export{n as default};
